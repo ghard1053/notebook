@@ -4,4 +4,4 @@
 # I18n.load_path += Dir[Rails.root.join('lib', 'locale', '*.{rb,yml}')]
 
 # デフォルトのロケールを:en以外に設定する
-I18n.default_locale = :pt
+# I18n.default_locale = :pt
