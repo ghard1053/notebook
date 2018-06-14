@@ -2,6 +2,9 @@ namespace :dev do
   desc "Configura"
   task setup: :environment do
 
+    puts "rails db:drop db:create db:migrate"
+    %x(rails db:drop db:create db:migrate)
+
     puts "create kinds..."
 
     kinds = %w(Amigo Comercial Conhecido)
@@ -39,6 +42,17 @@ namespace :dev do
 
     puts "create phone succeeded"
 
-  end
+    puts "create address..."
 
+    Contact.all.each do |contact|
+      address = Address.create(
+        street: Faker::Address.street_address,
+        city: Faker::Address.city,
+        contact: contact
+      )
+    end
+
+    puts "create address succeeded"
+
+  end
 end
